@@ -7,20 +7,21 @@ class Model():
         if model_type=="YOLOv7":
             import os
             os.chdir("./YOLOv7")
-            from models.experimental import attempt_load as YOLO7_attempt_load
             from utils.torch_utils import select_device as YOLO7_select_device
-            from detect import detect as YOLO7_detect
+            
             self.device = YOLO7_select_device(device_type)
             self.model=self.load_model(weights)
 
     
     def load_model(self,weights):
         if self.model_type=="YOLOv7":
+            from models.experimental import attempt_load as YOLO7_attempt_load
             model = YOLO7_attempt_load(weights, map_location=self.device)
             return model
     
     def predict(self,image,options={}):
         if self.model_type=="YOLOv7":   
+            from detect import detect as YOLO7_detect
             opt = Namespace(agnostic_nms=False, 
                             augment=False, 
                             classes=None, 

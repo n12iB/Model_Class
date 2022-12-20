@@ -1,6 +1,4 @@
 
-import os
-os.chdir("/YOLOv7")
 import numpy as np
 import random
 import torch

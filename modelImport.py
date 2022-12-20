@@ -10,6 +10,7 @@ class Model():
         if model_type=="YOLOv7":
             self.model=self.load_model(weights)
             self.device = YOLO7_select_device(device_type)
+            print(self.device)
 
     
     def load_model(self,weights):

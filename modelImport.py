@@ -8,9 +8,8 @@ class Model():
     def __init__(self,model_type,weights,device_type):
         self.model_type=model_type
         if model_type=="YOLOv7":
-            self.model=self.load_model(weights)
             self.device = YOLO7_select_device(device_type)
-            print(self.device)
+            self.model=self.load_model(weights)
 
     
     def load_model(self,weights):

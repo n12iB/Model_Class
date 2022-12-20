@@ -9,6 +9,7 @@ class Model():
         self.model_type=model_type
         if model_type=="YOLOv7":
             os.chdir("./YOLOv7")
+            print(os.getcwd())
             self.device = YOLO7_select_device(device_type)
             self.model=self.load_model(weights)
 

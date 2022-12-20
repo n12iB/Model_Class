@@ -32,9 +32,10 @@ class Model():
                             nosave=False, 
                             project='runs/detect', 
                             save_conf=True, 
-                            save_txt=True, 
+                            save_txt=True,
+                            return_txt=True, 
                             source=image, 
                             update=False, 
                             view_img=False)
             
-            YOLO7_detect(opt,self.model)
+            return YOLO7_detect(opt,self.model)

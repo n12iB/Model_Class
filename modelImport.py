@@ -2,12 +2,13 @@ from YOLOv7.models.experimental import attempt_load as YOLO7_attempt_load
 from YOLOv7.utils.torch_utils import select_device as YOLO7_select_device
 from YOLOv7.detect import detect as YOLO7_detect
 from argparse import Namespace
-
+import os
 
 class Model():
     def __init__(self,model_type,weights,device_type):
         self.model_type=model_type
         if model_type=="YOLOv7":
+            os.chdir("./YOLOv7")
             self.device = YOLO7_select_device(device_type)
             self.model=self.load_model(weights)
 

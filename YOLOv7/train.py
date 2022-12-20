@@ -22,18 +22,18 @@ from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 
 import test  # import test.py to get mAP after each epoch
-from YOLOv7.models.experimental import attempt_load
-from YOLOv7.models.yolo import Model
-from YOLOv7.utils.autoanchor import check_anchors
-from YOLOv7.utils.datasets import create_dataloader
-from YOLOv7.utils.general import labels_to_class_weights, increment_path, labels_to_image_weights, init_seeds, \
+from models.experimental import attempt_load
+from models.yolo import Model
+from utils.autoanchor import check_anchors
+from utils.datasets import create_dataloader
+from utils.general import labels_to_class_weights, increment_path, labels_to_image_weights, init_seeds, \
     fitness, strip_optimizer, get_latest_run, check_dataset, check_file, check_git_status, check_img_size, \
     check_requirements, print_mutation, set_logging, one_cycle, colorstr
-from YOLOv7.utils.google_utils import attempt_download
-from YOLOv7.utils.loss import ComputeLoss, ComputeLossOTA
-from YOLOv7.utils.plots import plot_images, plot_labels, plot_results, plot_evolution
-from YOLOv7.utils.torch_utils import ModelEMA, select_device, intersect_dicts, torch_distributed_zero_first, is_parallel
-from YOLOv7.utils.wandb_logging.wandb_utils import WandbLogger, check_wandb_resume
+from utils.google_utils import attempt_download
+from utils.loss import ComputeLoss, ComputeLossOTA
+from utils.plots import plot_images, plot_labels, plot_results, plot_evolution
+from utils.torch_utils import ModelEMA, select_device, intersect_dicts, torch_distributed_zero_first, is_parallel
+from utils.wandb_logging.wandb_utils import WandbLogger, check_wandb_resume
 
 logger = logging.getLogger(__name__)
 

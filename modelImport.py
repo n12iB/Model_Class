@@ -7,9 +7,9 @@ class Model():
         if model_type=="YOLOv7":
             import os
             os.chdir("./YOLOv7")
-            from YOLOv7.models.experimental import attempt_load as YOLO7_attempt_load
-            from YOLOv7.utils.torch_utils import select_device as YOLO7_select_device
-            from YOLOv7.detect import detect as YOLO7_detect
+            from models.experimental import attempt_load as YOLO7_attempt_load
+            from utils.torch_utils import select_device as YOLO7_select_device
+            from detect import detect as YOLO7_detect
             self.device = YOLO7_select_device(device_type)
             self.model=self.load_model(weights)
 

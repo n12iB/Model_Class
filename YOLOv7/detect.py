@@ -128,9 +128,9 @@ def detect(opt,model, save_img=False):
                         xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                         line = (cls, *xyxy, conf) if opt.save_conf else (cls, *xywh)  # label format
                         try:
-                            txt_pred[p.stem].append(('%g ' * len(line)).rstrip() % line)
+                            txt_pred[p.stem].append((('%g ' * len(line)).rstrip() % line).split(" "))
                         except:
-                            txt_pred[p.stem]=[('%g ' * len(line)).rstrip() % line]
+                            txt_pred[p.stem]=[(('%g ' * len(line)).rstrip() % line).split(" ")]
 
                     if save_img or view_img:  # Add bbox to image
                         label = f'{names[int(cls)]} {conf:.2f}'

@@ -11,7 +11,7 @@ class Model():
             from utils.torch_utils import select_device as YOLO7_select_device
             self.device_type=device_type
             self.device = YOLO7_select_device(device_type)
-            self.model=self.load_model(weights)
+            self.modelW=self.load_model(weights)
 
     
     def load_model(self,weights):
@@ -40,10 +40,9 @@ class Model():
                             return_txt=True, 
                             source=image, 
                             update=False, 
-                            view_img=False, 
-                            weights=['/kaggle/working/yolov7/runs/train/yolov7/weights/best.pt'])
+                            view_img=False)
             opt_dict=vars(opt)
             for i in options:
                 opt_dict[i]=options[i]
 
-            return YOLO7_detect(opt,self.model)
+            return YOLO7_detect(opt,self.modelW)

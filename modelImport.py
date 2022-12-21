@@ -39,5 +39,5 @@ class Model():
             opt_dict=vars(opt)
             for i in options:
                 opt_dict[i]=options[i]
-            values=YOLO7_detect(opt,self.modelW)
+            values=YOLO7_detect(opt)
             return values

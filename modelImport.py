@@ -6,7 +6,8 @@ class Model():
         self.model_type=model_type
         if model_type=="YOLOv7":
             import os
-            os.chdir("./YOLOv7")
+            if not(str(os.getcwd()).endswith("/YOLOv7")):
+                os.chdir("./YOLOv7")
             from utils.torch_utils import select_device as YOLO7_select_device
             self.device_type=device_type
             self.device = YOLO7_select_device(device_type)

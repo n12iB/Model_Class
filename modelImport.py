@@ -45,4 +45,7 @@ class Model():
             for i in options:
                 opt_dict[i]=options[i]
 
-            return YOLO7_detect(opt,self.modelW)
+            print(modelW)
+            values=YOLO7_detect(opt,self.modelW)
+            print(modelW)
+            return values

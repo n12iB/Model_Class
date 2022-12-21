@@ -17,8 +17,8 @@ class Model():
     def load_model(self,weights):
         if self.model_type=="YOLOv7":
             from models.experimental import attempt_load as YOLO7_attempt_load
-            model = YOLO7_attempt_load(weights, map_location=self.device)
-            return model
+            modelW = YOLO7_attempt_load(weights, map_location=self.device)
+            return modelW
     
     def predict(self,image,options={}):
         if self.model_type=="YOLOv7":   

@@ -89,7 +89,7 @@ class Model():
                               entity=None,
                               name='exp',
                               exist_ok=False,
-                              quad=False
+                              quad=False,
                               linear_lr=False,
                               label_smoothing=0.0,
                               upload_dataset=False,

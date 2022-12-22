@@ -61,7 +61,7 @@ class Model():
             import logging
 
             logger = logging.getLogger(__name__)
-            
+            print(os.getcwd())
             opt=Namespace(weights='yolo7.pt',
                               cfg='',
                               data='data/coco.yaml',

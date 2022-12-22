@@ -40,7 +40,16 @@ class Model():
                             view_img=False)
             opt_dict=vars(opt)
             for i in options:
-                opt_dict[i]=options[i]
+                if i=="weights":
+                    if options[i]=="best":
+                        opt_dict[i]=self.best
+                    elif options[i]=="last":
+                        opt_dict[i]=self.last
+                    else:
+                        opt_dict[i]=self.last
+                else:
+                    opt_dict[i]=options[i]
+
             values=YOLO7_detect(opt)
             return values
     
@@ -109,7 +118,9 @@ class Model():
                 if i=="weights":
                     if options[i]=="best":
                         opt_dict[i]=self.best
-                    if options[i]=="last":
+                    elif options[i]=="last":
+                        opt_dict[i]=self.last
+                    else:
                         opt_dict[i]=self.last
                 else:
                     opt_dict[i]=options[i]

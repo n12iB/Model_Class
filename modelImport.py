@@ -170,7 +170,7 @@ class Model():
                 prefix = colorstr('tensorboard: ')
                 logger.info(f"{prefix}Start with 'tensorboard --logdir {opt.project}', view at http://localhost:6006/")
                 tb_writer = SummaryWriter(opt.save_dir)  # Tensorboard
-            results,last,best=YOLO7_train(hyp, opt, device, logger, tb_writer)
+            results,self.last,self.best=YOLO7_train(hyp, opt, device, logger, tb_writer)
 
         # Evolve hyperparameters (optional)
         else:

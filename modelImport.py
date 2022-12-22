@@ -12,6 +12,8 @@ class Model():
             self.device_type=device_type
             self.device = YOLO7_select_device(device_type)
             self.weights=weights
+            self.best=""
+            self.last=""
     
     def predict(self,image,options={}):
         if self.model_type=="YOLOv7":
@@ -104,7 +106,13 @@ class Model():
 
             opt_dict=vars(opt)
             for i in options:
-                opt_dict[i]=options[i]
+                if i=="weights":
+                    if options[i]=="best":
+                        opt_dict[i]=self.best
+                    if options[i]=="last":
+                        opt_dict[i]=self.last
+                else:
+                    opt_dict[i]=options[i]
 
         # Set DDP variables
         opt.world_size = int(os.environ['WORLD_SIZE']) if 'WORLD_SIZE' in os.environ else 1
@@ -151,7 +159,7 @@ class Model():
                 prefix = colorstr('tensorboard: ')
                 logger.info(f"{prefix}Start with 'tensorboard --logdir {opt.project}', view at http://localhost:6006/")
                 tb_writer = SummaryWriter(opt.save_dir)  # Tensorboard
-            YOLO7_train(hyp, opt, device, logger, tb_writer)
+            [results,last,best]=YOLO7_train(hyp, opt, device, logger, tb_writer)
 
         # Evolve hyperparameters (optional)
         else:
@@ -232,4 +240,4 @@ class Model():
                     hyp[k] = round(hyp[k], 5)  # significant digits
 
                 # Train mutation
-                results = YOLO7_train(hyp.copy(), opt, device, logger)
+                [results,self.last,self.best] = YOLO7_train(hyp.copy(), opt, device, logger)

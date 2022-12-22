@@ -97,11 +97,8 @@ class Model():
                               save_period=-1,
                               artifact_alias="latest",
                               freeze=[0],
-                              v5_metric=False,
-                              global_rank=-1,
-                              total_batch_size=4,
-                              save_dir='runs/train/yolov7',
-                              world_size=1)
+                              v5_metric=False)
+
 
 
 

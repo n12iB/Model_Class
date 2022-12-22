@@ -159,7 +159,7 @@ class Model():
                 prefix = colorstr('tensorboard: ')
                 logger.info(f"{prefix}Start with 'tensorboard --logdir {opt.project}', view at http://localhost:6006/")
                 tb_writer = SummaryWriter(opt.save_dir)  # Tensorboard
-            [results,last,best]=YOLO7_train(hyp, opt, device, logger, tb_writer)
+            results,last,best=YOLO7_train(hyp, opt, device, logger, tb_writer)
 
         # Evolve hyperparameters (optional)
         else:
@@ -240,4 +240,4 @@ class Model():
                     hyp[k] = round(hyp[k], 5)  # significant digits
 
                 # Train mutation
-                [results,self.last,self.best] = YOLO7_train(hyp.copy(), opt, device, logger)
+                results,self.last,self.best = YOLO7_train(hyp.copy(), opt, device, logger)

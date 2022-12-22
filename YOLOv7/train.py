@@ -521,7 +521,9 @@ def train(hyp, opt, device, logger, tb_writer=None):
     else:
         dist.destroy_process_group()
     torch.cuda.empty_cache()
-    return [results,last,best]
+    print(last)
+    print(best)
+    return results,last,best
 
 
 if __name__ == '__main__':

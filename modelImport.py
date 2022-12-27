@@ -164,12 +164,12 @@ class Model():
                 hyp = yaml.load(f, Loader=yaml.SafeLoader)  # load hyps
 
             # Train
-            print(opt,flush=True)
             logger.info(opt)
             if not opt.evolve:
                 tb_writer = None  # init loggers
                 if opt.global_rank in [-1, 0]:
                     prefix = colorstr('tensorboard: ')
+                    print("hi")
                     logger.info(f"{prefix}Start with 'tensorboard --logdir {opt.project}', view at http://localhost:6006/")
                     b_writer = SummaryWriter(opt.save_dir)  # Tensorboard
                 results,self.last,self.best=YOLO7_train(hyp, opt, device, logger, tb_writer)

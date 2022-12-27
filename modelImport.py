@@ -125,7 +125,6 @@ class Model():
                 else:
                     opt_dict[i]=options[i]
             
-            print(opt,flush=True)
 
             # Set DDP variables
             opt.world_size = int(os.environ['WORLD_SIZE']) if 'WORLD_SIZE' in os.environ else 1
@@ -165,6 +164,7 @@ class Model():
                 hyp = yaml.load(f, Loader=yaml.SafeLoader)  # load hyps
 
             # Train
+            print(opt,flush=True)
             logger.info(opt)
             if not opt.evolve:
                 tb_writer = None  # init loggers

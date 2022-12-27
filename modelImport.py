@@ -124,7 +124,8 @@ class Model():
                         opt_dict[i]=self.last
                 else:
                     opt_dict[i]=options[i]
-            print(opt_dict)
+            
+            print(opt,flush=True)
 
             # Set DDP variables
             opt.world_size = int(os.environ['WORLD_SIZE']) if 'WORLD_SIZE' in os.environ else 1
